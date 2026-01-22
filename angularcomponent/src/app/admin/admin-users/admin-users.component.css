@@ -1,0 +1,193 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    background-color: #f4f6f9;
+    overflow: hidden;
+}
+
+.admin-wrapper {
+    display: flex;
+    height: 100%;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 250px;
+    background-color: #28a745; /* Green Theme */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.logo h2 {
+    margin-bottom: 40px;
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+    font-size: 1.1rem;
+}
+
+.menu li:hover, .menu li.active {
+    background-color: rgba(255,255,255,0.15);
+}
+
+.menu li.logout {
+    margin-top: auto;
+    color: #ffcccb; /* Light red for logout text */
+}
+
+/* --- MAIN CONTENT --- */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header h1 { color: #333; font-weight: 300; }
+
+.btn-add {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* --- TABLE --- */
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #555;
+    font-weight: 600;
+}
+
+.prod-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+/* Badges */
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.user-badge {
+    background-color: #e3f2fd;
+    color: #1e88e5;
+}
+
+.admin-badge {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Action Buttons */
+.btn-icon {
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.2s;
+}
+
+.btn-icon:hover { transform: scale(1.2); }
+.delete:hover { color: red; }
+
+/* Inherit your existing table styles, add these specific ones: */
+
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; }
+
+/* Role Badges */
+.role-admin {
+    background-color: #8e44ad; /* Purple */
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.role-user {
+    background-color: #3498db; /* Blue */
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* Action Buttons */
+.btn-action {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.btn-promote { background-color: #27ae60; } /* Green */
+.btn-promote:hover { background-color: #219150; }
+
+.btn-demote { background-color: #e67e22; } /* Orange */
+.btn-demote:hover { background-color: #d35400; }
+
+.btn-delete { background-color: #c0392b; } /* Red */

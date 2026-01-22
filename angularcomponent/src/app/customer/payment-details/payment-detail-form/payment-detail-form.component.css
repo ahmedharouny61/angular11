@@ -1,0 +1,42 @@
+/* We only style the form card itself here */
+.payment-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    /* Ensure it takes full width of wherever it's placed */
+    width: 100%; 
+}
+
+/* Form Inputs Styling */
+.form-label { font-weight: 600; color: #444; margin-bottom: 6px; display: block; }
+.form-control, .input-group-text { height: 45px; border-radius: 5px; border: 1px solid #ddd; }
+.input-group-text { background-color: #f8f9fa; }
+
+/* Stripe Container */
+.stripe-card-container {
+    height: 45px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+ngx-stripe-card { width: 100%; }
+
+.btn-success {
+    background-color:linear #28a745;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    height: 45px;
+    margin-top: 15px;
+    border-radius: 5px;
+    width: 100%;
+}
+.btn-success:hover { background-color: #218838; }

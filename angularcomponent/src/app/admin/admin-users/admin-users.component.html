@@ -1,0 +1,96 @@
+<div class="admin-wrapper">
+    
+    <div class="sidebar">
+        <div class="logo">
+            <h2>Admin Panel</h2>
+        </div>
+        <ul class="menu">
+            <li routerLink="/admin/dashboard">📦 Products</li>
+            <li>🚚 Orders (Coming Soon)</li>
+            <li class="active">👥 Users</li>
+            <li class="logout" routerLink="/login">🚪 Logout</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        
+        <div class="header">
+            <h1>User Management</h1>
+            <button class="btn-add" (click)="showAddForm = !showAddForm">
+                {{ showAddForm ? '❌ Close' : '+ Add New User' }}
+            </button>
+        </div>
+
+        <div class="add-user-box" *ngIf="showAddForm">
+            <h3>New User Details</h3>
+            <form [formGroup]="addUserForm" (ngSubmit)="addUser()">
+                <div class="form-row">
+                    <input type="text" formControlName="userName" placeholder="Username" class="form-control">
+                    <input type="email" formControlName="email" placeholder="Email" class="form-control">
+                    <input type="password" formControlName="password" placeholder="Password" class="form-control">
+                    <select formControlName="role" class="form-control">
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                    <button type="submit" [disabled]="addUserForm.invalid" class="btn-submit">Save</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User Profile</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>#{{ user.Id || user.id }}</td>
+                        
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <img [src]="'https://ui-avatars.com/api/?name=' + (user.UserName || user.userName) + '&background=random&color=fff'" 
+                                     alt="avatar" class="prod-img" style="border-radius: 50%;">
+                                
+                                <strong>{{ user.UserName || user.userName }}</strong>
+                            </div>
+                        </td>
+                        
+                        <td>{{ user.Email || user.email }}</td>
+                        
+                        <td>
+                            <span class="badge" 
+                                  [ngClass]="{'admin-badge': (user.Role || user.role) === 'Admin', 'user-badge': (user.Role || user.role) !== 'Admin'}">
+                                {{ user.Role || user.role }}
+                            </span>
+                        </td>
+                        
+                        <td>
+                            <button class="btn-icon delete" (click)="deleteUser(user.Id || user.id)" title="Delete User">🗑️</button>
+                            <button *ngIf="user.role !== 'Admin'" 
+                                    (click)="promote(user)" 
+                                    class="btn-action btn-promote" 
+                                    title="Promote to Admin">
+                                ⬆️ Promote
+                            </button>
+
+                            <button *ngIf="user.role === 'Admin'" 
+                                    (click)="demote(user)" 
+                                    class="btn-action btn-demote" 
+                                    title="Demote to User">
+                                ⬇️ Demote
+                            </button>
+
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div> </div> 

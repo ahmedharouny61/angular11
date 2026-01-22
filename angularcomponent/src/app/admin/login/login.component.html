@@ -1,0 +1,26 @@
+<div class="wrapper">
+    <div class="container">
+        <h1>Welcome</h1>
+        
+        <form class="form">
+            <input type="text" [(ngModel)]="loginObj.userName" name="userName" placeholder="Username">
+            
+            <input type="password" placeholder="Password" [(ngModel)]="loginObj.password" name="password">
+            
+            <button type="button" id="login-button" (click)="onLogin()">Login</button>
+
+            <div style="margin-top: 15px;">
+                <p>Don't have an account?</p>
+                <a routerLink="/signup" style="color: white; font-weight: bold; text-decoration: underline; cursor: pointer;">
+                    Create Account
+                </a>
+            </div>
+
+        </form>
+    </div>
+    
+    <ul class="bg-bubbles">
+        <li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li>
+    </ul>
+</div>

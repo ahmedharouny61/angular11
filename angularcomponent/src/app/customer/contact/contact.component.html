@@ -1,0 +1,71 @@
+<div class="page-wrapper">
+    <div class="page-title">
+        <h2>Contact Us</h2>
+        <p>We'd love to hear from you!</p>
+    </div>
+
+    <div class="content-container">
+        
+        <div class="form-side">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+                
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" formControlName="name" placeholder="Your Name">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" formControlName="email" placeholder="name@example.com">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Subject</label>
+                    <input type="text" class="form-control" formControlName="subject" placeholder="How can we help?">
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" rows="5" formControlName="message" placeholder="Write your message here..."></textarea>
+                </div>
+
+                <button class="btn btn-success w-100" type="submit" [disabled]="contactForm.invalid">
+                    Send Message
+                </button>
+
+            </form>
+        </div>
+
+        <div class="info-side">
+            <div class="info-card">
+                <h3>Get in Touch</h3>
+                <p class="text-muted">Have a question or just want to say hi? We'd love to hear from you.</p>
+                
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <div>
+                        <strong>Address</strong>
+                        <p>123 Green Street, Cairo, Egypt</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="icon">📞</span>
+                    <div>
+                        <strong>Phone</strong>
+                        <p>+20 123 456 7890</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="icon">✉️</span>
+                    <div>
+                        <strong>Email</strong>
+                        <p>support@eshoping.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

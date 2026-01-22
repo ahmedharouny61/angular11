@@ -1,0 +1,87 @@
+<ng-container *ngIf="products.length != 0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of products; let i = index">
+                            <td data-label="Sr.No">{{i+1}}</td>
+                            
+                            <td data-label="Product Name">{{item.name}}</td>
+                            
+                            <td data-label="Product Image">
+                                <img [src]="item.image" alt="">
+                            </td>
+                            
+                            <td data-label="Description" class="desc-col">
+                                {{item.description}}
+                            </td>
+                            
+                            <td data-label="Price">${{item.price}}</td>
+                            
+                            <td data-label="Quantity">
+                                <div class="btn-group btn-group-sm">
+                                <td style="display: flex; align-items: center; gap: 5px;">
+    
+    <button class="btn btn-secondary btn-sm" (click)="decrease(item)">-</button>
+    
+    <span style="font-weight: bold; margin: 0 10px;">{{ item.quantity }}</span>
+
+    <button class="btn btn-secondary btn-sm" 
+            (click)="increase(item)"
+            [disabled]="item.quantity >= item.stock"
+            [style.opacity]="item.quantity >= item.stock ? '0.5' : '1'">
+        +
+    </button>
+
+    <small *ngIf="item.quantity >= item.stock" style="color: red; margin-left: 5px; font-size: 0.7rem;">
+        Max Reached
+    </small>
+
+</td>
+                                </div>
+                            </td>
+                            
+                            <td data-label="Total" style="font-weight: bold;">${{item.total}}</td>
+                            
+                            <td data-label="Action">
+                                <button (click)="removeItem(item)" class="btn btn-danger btn-sm">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="cart-total">
+                <h3><strong>Grand Total : ${{grandTotal}}</strong></h3>
+                <button (click)="emptycart()" class="btn btn-danger">Empty Cart</button>
+                <button routerLink="/shop/products" class="btn btn-primary">Shop More</button>
+                <button class="checkout" (click)="checkout()">Checkout</button>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="products.length == 0">
+    <div class="container">
+        <div class="card-table center">
+            <h4>Your cart is empty!</h4>
+            <h6>Add item to it now</h6>
+            <button routerLink="/shop/products" class="btn btn-primary">Shop Now</button>
+        </div>
+    </div>
+</ng-container>

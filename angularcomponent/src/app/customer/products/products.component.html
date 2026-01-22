@@ -1,0 +1,78 @@
+<app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+
+<app-filter 
+    [all]="products.length"
+    [categories]="categories" 
+    [counts]="categoryCounts"
+    (filterRadioButtonSelectionChanged)="onCategorySelected($event)">
+</app-filter>
+
+<div class="filter-section" style="text-align: center; margin: 20px 0;">
+    <label style="font-weight: bold; margin-right: 10px;">Filter by Brand:</label>
+    
+    <select (change)="onCompanySelected($any($event.target).value)" 
+            style="padding: 8px 15px; border-radius: 20px; border: 1px solid #ccc; cursor: pointer;">
+        <option value="All">All Brands</option>
+        <option *ngFor="let comp of companies" [value]="comp">
+            {{ comp }}
+        </option>
+    </select>
+</div>
+
+<div class="product-list-wrapper">
+    <div *ngFor="let p of displayedProducts"> 
+        <div class="product-container">    
+            
+            <div class="image-container">
+                <img [src]="p.image" alt="{{p.name}}" class="imggg">
+            </div>
+        
+            <div class="info-section">
+                <small style="color: #888; text-transform: uppercase; font-size: 0.75rem; display: block; text-align: center;">
+                    {{ p.company }}
+                </small>
+
+                <div class="name-container">
+                    <h6>{{ p.name }}</h6>
+                </div>
+                
+                <div class="detailContainer">
+                    <div class="details" [ngStyle]="{color: p.available === 'Available' ? 'Green' : 'Red'}">
+                        <strong><span [ngStyle]="{'color': p.stock > 0 ? 'green' : 'red', 'font-weight': 'bold'}">
+    {{ p.stock > 0 ? 'Available' : 'Out of Stock' }}
+</span></strong>
+                    </div>
+                    <div class="details"><b>Price :</b> ${{ p.price }}</div>
+                </div>
+            </div>
+        
+            <div class="options">
+               <div class="options">
+    
+    <button class="btn btn-primary" 
+            (click)="addtocart(p)" 
+            [disabled]="p.stock <= 0"
+            [ngClass]="{'btn-secondary': p.stock <= 0}">
+        Add to Cart
+    </button>
+
+    <button (click)="buynow(p)" 
+            class="btn btn-warning" 
+            *ngIf="p.stock > 0; else notifyme">
+        Buy Now
+    </button>
+
+    <ng-template #notifyme>
+        <button class="btn btn-danger" disabled style="opacity: 0.6; cursor: not-allowed;">
+            Out of Stock
+        </button>
+    </ng-template>
+
+</div>  <ng-template #notifyme>
+                    <button class="btn btn-danger">Notify me</button>
+                </ng-template>
+            </div>
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="alert alert-info" role="alert">
+    Welcome to our new shop! Check out the latest deals.
+</div>
+
+<div class="radio-group">
+  
+  <div *ngFor="let option of avatarOptions" class="radio-item">
+    
+    <input 
+      type="radio" 
+      [id]="'opt-' + option.id" 
+      name="categoryGroup" 
+      [value]="option.id"
+      [(ngModel)]="selectedAvatarId"
+      (change)="onSelectionChange(option.name)">
+
+    <label [for]="'opt-' + option.id" class="radio-label">
+      <img [src]="option.image" [alt]="option.name" class="avatar-img">
+      <span class="category-name">{{ option.name }}</span>
+    </label>
+
+  </div>
+
+</div>

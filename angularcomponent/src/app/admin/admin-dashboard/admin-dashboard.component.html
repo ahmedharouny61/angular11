@@ -1,0 +1,89 @@
+<div class="admin-wrapper">
+    
+    <div class="sidebar">
+        <div class="logo">
+            <h2>Admin Panel</h2>
+        </div>
+        <ul class="menu">
+            <li class="active">📦 Products</li>
+            <li>🚚 Orders (Coming Soon)</li>
+            <li routerLink="/admin/users">👥 Users</li>
+            <li class="logout" routerLink="/login">🚪 Logout</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        
+        <div class="header">
+            <h1>Product Management</h1>
+            <button class="btn-add">+ Add New Product</button>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Company</th> 
+                        <th>Category</th>
+                        <th>Stock</th> <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products">
+                        <td>
+                            <img [src]=" product.imageUrl || product.image" alt="img" class="prod-img">
+                        </td>
+                        
+                        <td>{{product.name }}</td>
+
+                        <td>
+                            <strong>{{product.company }}</strong>
+                        </td>
+
+                        <td>
+                            <span class="badge">{{product.category }}</span>
+                        </td>
+<td>
+    <div style="display: flex; align-items: center; gap: 5px;">
+        
+       <input type="number" 
+       [value]="product.stock" 
+       (input)="product.stock = $any($event.target).value; product.Stock = $any($event.target).value"
+       style="width: 60px; padding: 5px;">
+
+        <button (click)="updateStock(product)" 
+                class="btn-icon" 
+                title="Save Stock"
+                style="background: #28a745; color: white; border: none; cursor: pointer; padding: 5px; border-radius: 4px;">
+            💾
+        </button>
+
+    </div>
+    
+    <small [class.stock-out]="(product.stock) == 0"
+           [class.stock-low]="(product.stock) > 0 && (product.stock) < 5"
+           [class.stock-ok]="(product.stock) >= 5"
+           style="font-weight: bold; font-size: 0.75rem;">
+        
+        <span *ngIf="(product.stock ) == 0">Out of Stock</span>
+        <span *ngIf="(product.stock ) > 0 && (product.stock) < 5">Low Stock</span>
+        <span *ngIf="(product.stock ) >= 5">In Stock</span>
+    </small>
+</td>
+                        
+                        <td class="price">${{product.price }}</td>
+                        
+                        <td>
+                            <button class="btn-icon edit" title="Edit">✏️</button>
+                            <button class="btn-icon delete" title="Delete">🗑️</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,102 @@
+/* --- NEW GRID LAYOUT CSS --- */
+
+/* 1. Parent Wrapper to make items sit side-by-side */
+.product-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;       /* Allows items to wrap to next line */
+    justify-content: center; /* Centers items */
+    padding: 20px;
+    gap: 20px;             /* Space between items */
+}
+
+/* 2. The Product Card Box */
+.product-container {
+    width: 250px;          /* Fixed width for the card */
+    border: 1px solid #ddd; /* Light border */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;          /* Ensures cards in same row are same height */
+    box-sizing: border-box;
+}
+
+/* 3. Image Handling */
+.image-container {
+    height: 180px;         /* Fixed height for image area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.imggg {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;   /* Keeps image aspect ratio */
+}
+
+/* 4. Text & Details Spacing */
+.name-container {
+    margin-bottom: 10px;
+    text-align: center;
+    height: 40px;          /* Fixed height for name to align rows */
+    overflow: hidden;
+}
+
+.detailContainer {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.details {
+    margin-bottom: 5px;
+}
+
+/* 5. Buttons Layout */
+.options {
+    display: flex;
+    justify-content: space-between; /* Spreads buttons apart */
+    gap: 5px;
+}
+
+.options .btn {
+    font-size: 0.8rem; /* Makes text fit better */
+    flex: 1;           /* Buttons take equal width */
+}
+
+/* --- YOUR EXISTING HEADER CSS (UNCHANGED) --- */
+.header {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding: 5% 3%; 
+    width: 100%;
+    box-sizing: border-box;
+    background: linear-gradient(45deg, #1eb37a, #feb47b);
+}
+
+.site-image {
+    width: 45%; 
+    display: flex;
+    justify-content: flex-end;
+}
+
+.site-image img {
+    width: 45%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+}
+
+.site-slogan {
+    width: 45%; 
+    margin-left: 5%; 
+    text-align: center;
+    color: #000000; 
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 300%; 
+    line-height: 1.2;
+    text-shadow: none; 
+}
